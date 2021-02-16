@@ -1,0 +1,14 @@
+<h1> New Game </h1>
+<ul>
+<% @letters.each do |letter| %>
+  <li><%= letter.to_s.upcase %></li>
+<% end %>
+</ul>
+
+<p> What is the longest word you can find? </p>
+<form action="/score" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters %>
+  <input type="text" name="word">
+  <input type="submit" value="Play">
+</form>
